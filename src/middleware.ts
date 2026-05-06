@@ -10,7 +10,7 @@ function isPublicPath(pathname: string) {
   return false;
 }
 
-export async function proxy(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request });
 
   const supabase = createServerClient(
@@ -39,8 +39,6 @@ export async function proxy(request: NextRequest) {
     } = await supabase.auth.getUser();
     user = authUser ? { id: authUser.id } : null;
   } catch (error) {
-    // Transient auth network failures should not crash request handling.
-    // Route handlers/pages can still decide what to do for missing auth.
     console.warn('Middleware auth check failed:', error);
   }
 
