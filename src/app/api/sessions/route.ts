@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { getSessionUserId, supabaseAdmin } from '@/lib/supabase/server';
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     const userId = await getSessionUserId();
     if (!userId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

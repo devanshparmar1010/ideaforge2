@@ -53,11 +53,13 @@ export async function POST(req: NextRequest) {
 
     const sb = await createServerSupabase();
 
-    let { data: user, error: userSelectErr } = await sb
+    const { data: userData, error: userSelectErr } = await sb
       .from('users')
       .select('*')
       .eq('id', userId)
       .maybeSingle();
+
+    let user = userData;
 
     if (userSelectErr) {
       console.error('users select:', userSelectErr.message);

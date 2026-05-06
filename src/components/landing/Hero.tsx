@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { motion, useMotionValue, useSpring, useMotionTemplate, Variants } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useMotionTemplate } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { Sparkles } from 'lucide-react';
@@ -31,7 +31,7 @@ export function Hero({
 
   const pointerGlow = useMotionTemplate`radial-gradient(1200px circle at ${springX}px ${springY}px, rgba(124, 110, 250, 0.08), transparent 40%)`;
 
-  const containerVariants: any = {
+  const containerVariants: Record<string, unknown> = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
@@ -42,7 +42,7 @@ export function Hero({
     },
   };
 
-  const itemVariants: any = {
+  const itemVariants: Record<string, unknown> = {
     hidden: { opacity: 0, y: 30, filter: 'blur(10px)' },
     show: {
       opacity: 1,
