@@ -47,9 +47,12 @@ export function ChecklistCard({ data, sessionId }: { data: Record<string, unknow
 
   useEffect(() => {
     if (total && count === total) {
-      setConfetti(true);
-      const t = setTimeout(() => setConfetti(false), 4500);
-      return () => clearTimeout(t);
+      const showConfetti = () => {
+        setConfetti(true);
+        const t = setTimeout(() => setConfetti(false), 4500);
+        return () => clearTimeout(t);
+      };
+      return showConfetti();
     }
   }, [count, total]);
 

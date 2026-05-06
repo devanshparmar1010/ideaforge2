@@ -327,7 +327,7 @@ Cover all major screens: onboarding, core features, secondary features, settings
 Mermaid rules (critical): use short node IDs (A, B, C1, …) and put human-readable text in square brackets only when it contains no ] or " characters; if a label needs brackets or quotes, use double-quoted strings for the label, e.g. A["Login / Sign up"]. Do not put raw JSON or markdown inside mermaid_code—only the diagram text.
 `,
 
-  pptSlides: (idea: string, analysis: any) => `
+  pptSlides: (idea: string, analysis: Record<string, unknown>) => `
 You are a pitch deck designer. Generate content for a 12-slide investor pitch deck.
 
 IDEA: ${idea}

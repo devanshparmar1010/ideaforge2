@@ -18,8 +18,9 @@ export type InputProps = TextareaProps | InputFieldProps;
 
 export const Input = forwardRef<HTMLTextAreaElement | HTMLInputElement, InputProps>(
   (props, ref) => {
-    const { className, ...rest } = props;
+    const { className } = props;
     if (props.as === 'input') {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { as: _a, ...inputProps } = props;
       return (
         <input
@@ -29,6 +30,7 @@ export const Input = forwardRef<HTMLTextAreaElement | HTMLInputElement, InputPro
         />
       );
     }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { as: _a, ...taProps } = props as TextareaProps;
     return (
       <textarea

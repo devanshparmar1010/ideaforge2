@@ -10,13 +10,16 @@ type Screen = { name?: string; purpose?: string; ui_elements?: string[]; connect
 
 export function UIFlowCard({ data }: { data: Record<string, unknown> | null }) {
   const screens = (data?.screens as Screen[]) ?? [];
-  const initialCode = String(data?.mermaid_code ?? 'flowchart TD\n    A[Start] --> B[End]');
-  const [code, setCode] = useState(initialCode);
+  const mermaidCode = String(data?.mermaid_code ?? 'flowchart TD\n    A[Start] --> B[End]');
+  const [code, setCode] = useState(mermaidCode);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    setCode(String(data?.mermaid_code ?? 'flowchart TD\n    A[Start] --> B[End]'));
-  }, [data?.mermaid_code]);
+    const newCode = String(data?.mermaid_code ?? 'flowchart TD\n    A[Start] --> B[End]');
+    if (newCode !== code) {
+      setCode(newCode);
+    }
+  }, [data?.mermaid_code, code]);
 
   return (
     <section
